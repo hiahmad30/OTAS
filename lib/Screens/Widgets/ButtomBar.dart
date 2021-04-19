@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../Resources.dart';
 import '../AllStudents.dart';
 import '../HomePage.dart';
-import '../Notifications.dart';
+import '../Notification.dart';
 import '../StatePage.dart';
 
 class BottomBarPage extends StatefulWidget {
@@ -21,12 +21,13 @@ class _BottomBarPageState extends State<BottomBarPage> {
     HomePage(),
     StatePage(),
     AllStudents(),
-    Notifications(),
+    NotificationPage(),
   ];
 
   void _onItemTapped(int index) {
     setState(() {
       selectedWidget = _widgetOptions[index];
+      _currentIndex = index;
     });
   }
 
@@ -43,82 +44,40 @@ class _BottomBarPageState extends State<BottomBarPage> {
         },
         items: [
           BottomNavigationBarItem(
-            activeIcon: ShaderMask(
-              shaderCallback: (Rect bounds) {
-                return RadialGradient(
-                  center: Alignment.topLeft,
-                  radius: 0.5,
-                  colors: <Color>[
-                    Colors.greenAccent[200],
-                    Colors.blueAccent[200]
-                  ],
-                  tileMode: TileMode.repeated,
-                ).createShader(bounds);
-              },
-              child: Icon(Icons.home_rounded, color: AppColors.primaryColor),
-            ),
+            activeIcon: Icon(Icons.home_rounded, color: AppColors.primaryColor),
+
             icon: new Icon(Icons.home_rounded, color: Colors.grey),
-            title: Text('Home'),
+            title: Text(
+              'Home',
+              style: TextStyle(color: AppColors.primaryColor),
+            ),
             // label: 'Home'
           ),
           BottomNavigationBarItem(
-            activeIcon: ShaderMask(
-              shaderCallback: (Rect bounds) {
-                return RadialGradient(
-                  center: Alignment.topLeft,
-                  radius: 1.0,
-                  colors: <Color>[
-                    AppColors.primaryColor,
-                    AppColors.primaryColor,
-                  ],
-                  // tileMode: TileMode.mirror,
-                ).createShader(bounds);
-              },
-              child: Icon(
-                Icons.monitor,
-              ),
-            ),
+            activeIcon: Icon(Icons.monitor, color: AppColors.primaryColor),
             icon: Icon(Icons.monitor, color: Colors.grey),
-            title: Text('Stats'),
+            title: Text(
+              'Stats',
+              style: TextStyle(color: AppColors.primaryColor),
+            ),
           ),
           BottomNavigationBarItem(
-            activeIcon: ShaderMask(
-              shaderCallback: (Rect bounds) {
-                return RadialGradient(
-                  center: Alignment.topLeft,
-                  radius: 1.0,
-                  colors: <Color>[
-                    AppColors.primaryColor,
-                    AppColors.primaryColor,
-                  ],
-                  tileMode: TileMode.mirror,
-                ).createShader(bounds);
-              },
-              child: Icon(Icons.account_circle),
-            ),
+            activeIcon:
+                Icon(Icons.account_circle, color: AppColors.primaryColor),
             icon: Icon(Icons.account_circle, color: Colors.grey),
-            title: Text('Students'),
+            title: Text(
+              'Students',
+              style: TextStyle(color: AppColors.primaryColor),
+            ),
           ),
           BottomNavigationBarItem(
-            activeIcon: ShaderMask(
-              shaderCallback: (Rect bounds) {
-                return RadialGradient(
-                  center: Alignment.topLeft,
-                  radius: 1.0,
-                  colors: <Color>[
-                    AppColors.primaryColor,
-                    AppColors.primaryColor,
-                  ],
-                  tileMode: TileMode.mirror,
-                ).createShader(bounds);
-              },
-              child: Icon(
-                Icons.notifications_outlined,
-                color: AppColors.primaryColor,
-              ),
-            ),
+            activeIcon: Icon(Icons.notifications_outlined,
+                color: AppColors.primaryColor),
             icon: Icon(Icons.notifications_outlined, color: Colors.grey),
-            title: Text('Notifications'),
+            title: Text(
+              'Notifications',
+              style: TextStyle(color: AppColors.primaryColor),
+            ),
           ),
         ],
       ),

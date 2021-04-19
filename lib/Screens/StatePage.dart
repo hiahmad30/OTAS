@@ -10,6 +10,44 @@ class StatePage extends StatefulWidget {
 }
 
 class _StatePageState extends State<StatePage> {
+  List<Map<String, dynamic>> cardModel = [
+    {
+      'name': 'Total Apps',
+      'icon': 'assets/statsicon.png',
+      'figure': '1200',
+      'color': AppColors.c1Color
+    },
+    {
+      'name': 'Total Paid',
+      'icon': 'assets/statsicon.png',
+      'figure': '\$5,434',
+      'color': AppColors.c2dColors,
+    },
+    {
+      'name': 'Completed Apps',
+      'icon': 'assets/statsicon.png',
+      'figure': '154',
+      'color': AppColors.c3Color
+    },
+    {
+      'name': 'Awaiting Conditional Acceptance',
+      'icon': 'assets/statsicon.png',
+      'figure': '1200',
+      'color': AppColors.c4Color
+    },
+    {
+      'name': 'Awaiting Payment',
+      'icon': 'assets/statsicon.png',
+      'figure': '1200',
+      'color': AppColors.c5Color
+    },
+    {
+      'name': 'Awaiting Final Acceptance',
+      'icon': 'assets/statsicon.png',
+      'figure': '1200',
+      'color': AppColors.c5Color
+    }
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -144,29 +182,16 @@ class _StatePageState extends State<StatePage> {
                     ),
                     Container(
                       width: Get.width,
-                      height: Get.height * 0.6,
+                      height: Get.height * 0.56,
                       child: StaggeredGridView.countBuilder(
+                        padding: const EdgeInsets.all(8.0),
                         crossAxisCount: 4,
-                        itemCount: 6,
-                        itemBuilder: (BuildContext context, int index) =>
-                            Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: new Card(
-                              color: Colors.green,
-                              child: Container(
-                                height: 400,
-                                child: new Center(
-                                  child: new CircleAvatar(
-                                    backgroundColor: Colors.white,
-                                    child: new Text('$index'),
-                                  ),
-                                ),
-                              )),
-                        ),
-                        staggeredTileBuilder: (int index) =>
-                            new StaggeredTile.count(2, index.isEven ? 2 : 1),
-                        mainAxisSpacing: 4.0,
-                        crossAxisSpacing: 4.0,
+                        itemCount: cardModel.length, //staticData.length,
+                        itemBuilder: (context, index) {
+                          return _getCard2(cardModel[index]);
+                        },
+                        staggeredTileBuilder: (index) =>
+                            StaggeredTile.count(2, index.isEven ? 2 : 2.3),
                       ),
                     ),
                   ],
@@ -176,138 +201,59 @@ class _StatePageState extends State<StatePage> {
           ]),
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: _currentIndex,
-      //   onTap: (int index) {
-      //     setState(() {
-      //       _onItemTapped(index);
-      //     });
-      //   },
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       activeIcon: ShaderMask(
-      //         shaderCallback: (Rect bounds) {
-      //           return RadialGradient(
-      //             center: Alignment.topLeft,
-      //             radius: 0.5,
-      //             colors: <Color>[
-      //               Colors.greenAccent[200],
-      //               Colors.blueAccent[200]
-      //             ],
-      //             tileMode: TileMode.repeated,
-      //           ).createShader(bounds);
-      //         },
-      //         child: Icon(Icons.home_rounded),
-      //       ),
-      //       icon: new Icon(Icons.home_rounded, color: Colors.grey),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       activeIcon: ShaderMask(
-      //         shaderCallback: (Rect bounds) {
-      //           return RadialGradient(
-      //             center: Alignment.topLeft,
-      //             radius: 1.0,
-      //             colors: <Color>[
-      //               Colors.greenAccent[200],
-      //               Colors.blueAccent[200]
-      //             ],
-      //             tileMode: TileMode.mirror,
-      //           ).createShader(bounds);
-      //         },
-      //         child: Icon(Icons.monitor),
-      //       ),
-      //       icon: Icon(Icons.monitor, color: Colors.grey),
-      //       label: 'Stats',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       activeIcon: ShaderMask(
-      //         shaderCallback: (Rect bounds) {
-      //           return RadialGradient(
-      //             center: Alignment.topLeft,
-      //             radius: 1.0,
-      //             colors: <Color>[
-      //               Colors.greenAccent[200],
-      //               Colors.blueAccent[200]
-      //             ],
-      //             tileMode: TileMode.mirror,
-      //           ).createShader(bounds);
-      //         },
-      //         child: Icon(Icons.account_circle),
-      //       ),
-      //       icon: Icon(Icons.account_circle, color: Colors.grey),
-      //       label: 'Students',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       // activeIcon: ShaderMask(
-      //       //   shaderCallback: (Rect bounds) {
-      //       //     return RadialGradient(
-      //       //       center: Alignment.topLeft,
-      //       //       radius: 1.0,
-      //       //       colors: <Color>[
-      //       //         Colors.greenAccent[200],
-      //       //         Colors.blueAccent[200]
-      //       //       ],
-      //       //       tileMode: TileMode.mirror,
-      //       //     ).createShader(bounds);
-      //       //   },
-      //       //   child: Icon(Icons.notifications_outlined),
-      //       // ),
-      //       icon: Icon(Icons.notifications_outlined, color: Colors.grey),
-      //       label: 'Notifications',
-      //     ),
-      //   ],
-      // ),
     );
   }
 
-  Widget _getCard(int cardno, String text, String figure) {
+  Widget _getCard2(Map<String, dynamic> cardMap) {
     return InkWell(
-      onTap: () {},
-      child: Container(
-        height: 100,
-        width: 100,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: cardno == 0
-              ? AppColors.c1Color
-              : cardno == 1
-                  ? AppColors.c2dColors
-                  : AppColors.c3Color,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey,
-
-                // spreadRadius: 1,
-
-                blurRadius: 1),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(cardno == 0
-                  ? 'assets/1.png'
-                  : cardno == 1
-                      ? 'assets/2.png'
-                      : 'assets/3.png'),
-              Column(
-                children: [
-                  Text(
-                    '$text',
-                    style: TextStyle(color: AppColors.cardTextColor),
-                  ),
-                  Text(
-                    '$figure',
-                    style: TextStyle(
-                        color: AppColors.cardTextColor,
-                        fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
+      onTap: () {
+        // Get.to(() => Get.);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: 100,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: cardMap['color'],
+            boxShadow: [
+              BoxShadow(color: Colors.grey, blurRadius: 1),
             ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(
+                top: 8.0, right: 10, left: 10, bottom: 40),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 90,
+                      child: Text(
+                        cardMap['name'],
+                        style: TextStyle(
+                            color: AppColors.cardTextColor, fontSize: 17),
+                      ),
+                    ),
+                    Image.asset(
+                      cardMap['icon'],
+                      width: 40,
+                    ),
+                  ],
+                ),
+                Text(
+                  cardMap['figure'],
+                  style: TextStyle(
+                      color: AppColors.cardTextColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35),
+                )
+              ],
+            ),
           ),
         ),
       ),

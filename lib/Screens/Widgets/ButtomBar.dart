@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:otasagent/Screens/SearchPage.dart';
 
 import '../../Resources.dart';
 import '../AllStudents.dart';
@@ -19,6 +20,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
 
   final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
+    SearchPage(),
     StatePage(),
     AllStudents(),
     NotificationPage(),
@@ -44,11 +46,23 @@ class _BottomBarPageState extends State<BottomBarPage> {
         },
         items: [
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.home_rounded, color: AppColors.primaryColor),
+            activeIcon:
+                Icon(Icons.home_outlined, color: AppColors.primaryColor),
 
-            icon: new Icon(Icons.home_rounded, color: Colors.grey),
+            icon: new Icon(Icons.home_outlined, color: Colors.grey),
             title: Text(
               'Home',
+              style: TextStyle(color: AppColors.primaryColor),
+            ),
+            // label: 'Home'
+          ),
+          BottomNavigationBarItem(
+            activeIcon:
+                Icon(Icons.search_outlined, color: AppColors.primaryColor),
+
+            icon: new Icon(Icons.search_outlined, color: Colors.grey),
+            title: Text(
+              'Search',
               style: TextStyle(color: AppColors.primaryColor),
             ),
             // label: 'Home'
@@ -62,9 +76,9 @@ class _BottomBarPageState extends State<BottomBarPage> {
             ),
           ),
           BottomNavigationBarItem(
-            activeIcon:
-                Icon(Icons.account_circle, color: AppColors.primaryColor),
-            icon: Icon(Icons.account_circle, color: Colors.grey),
+            activeIcon: Icon(Icons.account_circle_outlined,
+                color: AppColors.primaryColor),
+            icon: Icon(Icons.account_circle_outlined, color: Colors.grey),
             title: Text(
               'Students',
               style: TextStyle(color: AppColors.primaryColor),

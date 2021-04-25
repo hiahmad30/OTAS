@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:get/get.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:otasagent/Models/AnnouncementModel.dart';
+import 'package:otasagent/Screens/MyProfile.dart';
 import '../Resources.dart';
 import 'AllStudents.dart';
 import 'Notification.dart';
 import 'StatePage.dart';
-import 'Widgets/chartWidget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -41,180 +43,90 @@ class _HomePageState extends State<HomePage> {
             height: Get.height,
             width: Get.width,
             child: Column(children: [
-              Expanded(
-                flex: 1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        child: Image.asset(
-                          'assets/logo2.png',
-                          width: 150,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 25.0, right: 20),
-                      child: Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Hello'),
-                            Text(
-                              'Ahmet Süngeriçlioğlu',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  color: Color(0xffF7F7F7),
-                                  child: DropdownButton<String>(
-                                    underline: Text(''),
-                                    items: <String>[
-                                      'Fall Semester 21/22',
-                                      'Fall Semester 20/21'
-                                    ].map((String value) {
-                                      return new DropdownMenuItem<String>(
-                                        value: value,
-                                        child: new Text(value),
-                                      );
-                                    }).toList(),
-                                    onChanged: (_) {},
-                                    hint: Text('Fall Semester 21/22'),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  color: AppColors.homeCardColors,
-                                  width: 160,
-                                  height: 40,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        'Total Payments',
-                                        style: TextStyle(
-                                            color: AppColors.appTextColor),
-                                      ),
-                                      Text(
-                                        '\$ 254,984.55',
-                                        style: TextStyle(
-                                            color: AppColors.greenCardColor,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 2,
+              Container(
+                height: 210,
                 child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        InkWell(
-                          onTap: () {
-                            _pickDate(context);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(7.0),
-                            child: Container(
-                              width: 100,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.grey,
-                                  ),
-                                  Text(
-                                    'This Month',
-                                    style: TextStyle(
-                                        color: AppColors.primaryColor),
-                                  ),
-                                ],
-                              ),
-                            ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 50.0, left: 30),
+                          child: Container(
+                            child: Image.asset('assets/logo.png', width: 80),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 15.0),
-                          child: Container(
-                            child: Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: <String>['May 24,2021', 'May 24,2021']
-                                      .map((String value) {
-                                    return new DropdownMenuItem<String>(
-                                      value: value,
-                                      child: new Text(value),
-                                    );
-                                  }).toList(),
-                                  onChanged: (_) {},
-                                  hint: Text('May 24,2021 '),
+                          padding: const EdgeInsets.only(top: 25.0, right: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      'Welcome back',
+                                      style: TextStyle(
+                                          // fontWeight: FontWeight.bold,
+                                          color: AppColors.headingTextColor,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      'Mohamed Habaza',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColors.primaryColor,
+                                          fontSize: 20),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.to(MyProfile());
+                                  },
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Image.asset('assets/avatar.png',
+                                        width: 50),
+                                  ),
                                 ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                DropdownButton<String>(
-                                  items: <String>[
-                                    'May 24,2021 ',
-                                    'May 24,2021 '
-                                  ].map((String value) {
-                                    return new DropdownMenuItem<String>(
-                                      value: value,
-                                      child: new Text(value),
-                                    );
-                                  }).toList(),
-                                  onChanged: (_) {},
-                                  hint: Text('May 24,2021'),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         )
                       ],
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 30,
                     ),
                     Container(
-                      height: Get.height * 0.36,
-                      width: Get.width,
-                      child: CustomRoundedBars.withSampleData(),
+                      child: Text(
+                        'Announcements',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.c1Color,
+                            fontSize: 20),
+                      ),
                     ),
                   ],
                 ),
               ),
-              Expanded(
-                  flex: 1,
-                  child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          _getCard(0, 'Total Apps', '1200'),
-                          _getCard(1, 'Total Paid', '\$25,500'),
-                          _getCard(2, 'Completed', '167')
-                        ],
-                      ))),
+              Container(
+                height: Get.height * 0.7,
+                width: Get.width,
+                child: ListView.builder(
+                  itemCount: announcements.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return getcard(announcements[index]);
+                  },
+                ),
+              ),
             ]),
           ),
         ),
@@ -222,49 +134,69 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _getCard(int cardno, String text, String figure) {
-    return InkWell(
-      onTap: () {
-        // Get.to(() => Get.);
-      },
+  getcard(AnnouncemtModel announcemtModel) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0),
       child: Container(
-        height: 110,
-        width: 110,
+        constraints: BoxConstraints(minHeight: 100),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: cardno == 0
-              ? AppColors.c1Color
-              : cardno == 1
-                  ? AppColors.c2dColors
-                  : AppColors.c3Color,
-          boxShadow: [
-            BoxShadow(color: Colors.grey, blurRadius: 1),
-          ],
-        ),
+            borderRadius: BorderRadius.circular(10),
+            color: Color(0xffF9F9F9),
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xff1B7289),
+              ),
+            ]),
+        //  height: 150,
+        width: Get.width,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.asset(cardno == 0
-                  ? 'assets/1.png'
-                  : cardno == 1
-                      ? 'assets/2.png'
-                      : 'assets/3.png'),
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    '$text',
-                    style: TextStyle(color: AppColors.cardTextColor),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(announcemtModel.imgUrl, width: 30),
+                        ),
+                      ),
+                      Container(
+                          child: Text(
+                        '${announcemtModel.name}',
+                        style: TextStyle(
+                            color: AppColors.dateTimeColor, fontSize: 12),
+                      )),
+                    ],
                   ),
-                  Text(
-                    '$figure',
-                    style: TextStyle(
-                        color: AppColors.cardTextColor,
-                        fontWeight: FontWeight.bold),
-                  )
+                  Container(
+                      child: Text(
+                    '${announcemtModel.dateTime}',
+                    style:
+                        TextStyle(color: AppColors.dateTimeColor, fontSize: 9),
+                  )),
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Linkify(
+                  onOpen: (link) async {
+                    print(link);
+                  },
+                  text: '${announcemtModel.message}',
+                  style: TextStyle(color: Color(0xff333333), fontSize: 14),
+                  linkStyle: TextStyle(color: Color(0xff2595B3)),
+                ),
+              ),
+              // Container(
+              //     child: Text(
+              //   '${announcemtModel.message}',
+              //   style: TextStyle(fontSize: 14),
+              // )),
             ],
           ),
         ),
@@ -272,17 +204,30 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  DateTime pickedDate = DateTime.now();
-  _pickDate(BuildContext context) async {
-    DateTime date = await showDatePicker(
-      context: context,
-      firstDate: DateTime(DateTime.now().year - 5),
-      lastDate: DateTime(DateTime.now().year + 5),
-      initialDate: pickedDate,
-    );
-    if (date != null)
-      setState(() {
-        pickedDate = date;
-      });
-  }
+  List<AnnouncemtModel> announcements = [
+    AnnouncemtModel(
+      'Istanbul Medipol University',
+      'assets/univ1.png',
+      'Regarding Istanbul Medipol University, bachelor admissions are open for undergraduate programs 2021/2022 in fall term.',
+      '12/04/2021 11:22 AM',
+    ),
+    AnnouncemtModel(
+      'Istanbul Commerce University',
+      'assets/univ2.png',
+      'Regarding Commerce university online registration link: http://internationaloffice.ticaret.edu.tr/online-registration/ ',
+      '12/04/2021 11:22 AM',
+    ),
+    AnnouncemtModel(
+      'Istanbul Gelisim University',
+      'assets/univ3.png',
+      'Dear Partners, Regarding Gelisim University - Topic: EXAM ORIENTATION FOR INTERNATIONAL STUDENTS Time: Apr 9, 2021 10:30 Istanbul Join Zoom Meeting https://zoom.us/j/92995105197?pwd=S3ZSR3Fuazdicmp0YUJCVGkzQ1paUT09 Meeting ID: 929 9510 5197 Passcode: 851928',
+      '02/04/2021 08:44 AM',
+    ),
+    AnnouncemtModel(
+      'Istanbul Medipol University',
+      'assets/univ1.png',
+      'Regarding Istanbul Medipol University, bachelor admissions are open for undergraduate programs 2021/2022 in fall term.',
+      '12/04/2021 11:22 AM',
+    )
+  ];
 }

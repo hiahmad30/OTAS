@@ -28,6 +28,7 @@ class _AllStudentsState extends State<AllStudents> {
     StudentModel(
         status: 'Pending Review',
         counter: 0,
+        phone: '00905497109000',
         name: 'MOHAMMAD ISSAM MOHAMMAD ABU FARHAH',
         address:
             'Şehremini Mah, Ahmet Vefik Paşa Cd. No: 6/A, 34104 Fatih/İstanbul',
@@ -38,6 +39,7 @@ class _AllStudentsState extends State<AllStudents> {
     StudentModel(
         status: 'Awaiting Cond. Acceptance',
         counter: 0,
+        phone: '00905497109000',
         degree: "Bachelor of Business Administration (English)",
         name: 'Mohamed Abdelkader A..',
         address:
@@ -49,6 +51,7 @@ class _AllStudentsState extends State<AllStudents> {
         status: 'Awaiting Final Acceptance',
         counter: 2,
         degree: 'Bachelor of Science',
+        phone: '00905497109000',
         address:
             'Şehremini Mah, Ahmet Vefik Paşa Cd. No: 6/A, 34104 Fatih/İstanbul',
         email: 'example@gmail.com',
@@ -65,10 +68,70 @@ class _AllStudentsState extends State<AllStudents> {
           child: Container(
             height: Get.height,
             width: Get.width,
-            child: Stack(
+            child: Column(
               children: [
-                SvgPicture.asset('assets/back.svg',
-                    width: Get.width, fit: BoxFit.fill),
+                Padding(
+                  padding: const EdgeInsets.only(top: 39.0, left: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            child: Image.asset('assets/logo.png', width: 80),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: Container(
+                              child: Text(
+                                'ALL STUDENTS',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.primaryColor,
+                                    fontSize: 20),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Padding(
+                        //Add padding around textfield
+                        padding:
+                            EdgeInsets.only(top: 15.0, left: 10, right: 10),
+                        child: Container(
+                          width: Get.width * 0.83,
+                          decoration: BoxDecoration(
+                            color: Color(0xffF5F6FA),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Container(
+                            height: 50,
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                suffixIcon: Icon(Icons.search),
+                                suffixStyle: TextStyle(
+                                  fontSize: 20,
+                                ),
+                                hintStyle: GoogleFonts.rubik(
+                                  color:
+                                      AppColors.dateTimeColor.withOpacity(0.24),
+                                  fontSize: 13,
+                                ),
+                                hintText:
+                                    "  Search for student by name or passport ID",
+                                border: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                disabledBorder: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Padding(
@@ -82,62 +145,13 @@ class _AllStudentsState extends State<AllStudents> {
                               bottomLeft: Radius.circular(8),
                               bottomRight: Radius.circular(8)),
                         ),
-                        height: Get.height * 0.7,
+                        height: Get.height * 0.66,
                         width: Get.width,
                         child: ListView.builder(
                             itemCount: demoStudents.length,
                             itemBuilder: (BuildContext context, int index) {
                               return getStudentCard(demoStudents[index]);
                             })),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 39.0, left: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "All Students",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        //Add padding around textfield
-                        padding:
-                            EdgeInsets.only(top: 15.0, left: 10, right: 10),
-                        child: Container(
-                          width: Get.width * 0.83,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Container(
-                            height: 40,
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.search),
-                                prefixStyle:
-                                    TextStyle(color: AppColors.primaryColor),
-                                hintStyle: GoogleFonts.rubik(
-                                  color: Color(0xff881832).withOpacity(0.24),
-                                  fontSize: 10,
-                                ),
-                                hintText:
-                                    "Search by Student name or Passport ID…",
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: AppColors.primaryColor,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ],
@@ -188,11 +202,11 @@ class _AllStudentsState extends State<AllStudents> {
                         width: 20,
                       ),
                       Container(
-                          width: 120,
-                          height: 40,
+                          width: Get.width * 0.46,
+                          height: 30,
                           child: Text(
                             studentModel.name,
-                            overflow: TextOverflow.fade,
+                            overflow: TextOverflow.ellipsis,
                           ))
                     ],
                   ),
@@ -212,7 +226,7 @@ class _AllStudentsState extends State<AllStudents> {
                                   ? Colors.green
                                   : studentModel.status ==
                                           'Awaiting Cond. Acceptance'
-                                      ? Color(0xffC15614)
+                                      ? AppColors.primaryColor
                                       : Colors.grey,
                             ),
                           ),
@@ -226,7 +240,7 @@ class _AllStudentsState extends State<AllStudents> {
                               ? Colors.green
                               : studentModel.status ==
                                       'Awaiting Cond. Acceptance'
-                                  ? Color(0xffC15614)
+                                  ? AppColors.primaryColor
                                   : Colors.grey,
                           width: 1,
                         ),
@@ -236,7 +250,8 @@ class _AllStudentsState extends State<AllStudents> {
                         ? Container(
                             width: 20,
                             child: Text('+' + studentModel.counter.toString(),
-                                style: TextStyle(color: Color(0xff9C9F98))))
+                                style: TextStyle(
+                                    color: Color(0xff9C9F98), fontSize: 10)))
                         : Container(),
                     Icon(
                       Icons.arrow_forward_ios,

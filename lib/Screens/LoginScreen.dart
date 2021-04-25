@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,180 +17,148 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.primaryColor,
         body: SingleChildScrollView(
           child: Container(
             height: Get.height,
-            child: Stack(
-              children: [
-                SvgPicture.asset('assets/back.svg',
-                    width: Get.width, fit: BoxFit.fill),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          topLeft: Radius.circular(20)),
-                    ),
-                    height: Get.height * 0.8,
-                    width: Get.width,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20)),
+              ),
+              height: Get.height * 0.8,
+              width: Get.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 10.0, top: 60, bottom: 100),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                              left: 40.0, top: 50, bottom: 100),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Welcome back",
-                                style: TextStyle(
-                                    color: AppColors.primaryColor,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text("Please enter your username and password",
-                                  style: TextStyle(color: Color(0xff757482))),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          //Add padding around textfield
-                          padding:
-                              EdgeInsets.only(top: 15.0, left: 10, right: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'USERNAME',
-                                  style:
-                                      TextStyle(color: AppColors.primaryColor),
-                                ),
-                              ),
-                              TextFormField(
-                                //   controller: _emailControllerlogin,
-                                keyboardType: TextInputType.emailAddress,
-
-                                // onSaved: (val) => _email = val,
-                                decoration: InputDecoration(
-                                  //Add th Hint text here.
-                                  hintText: "Ahmet Süngeriçlioğlu",
-                                  //  hintStyle: MyResources.hintfontStyle,
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  suffixIcon: IconButton(
-                                      icon: Icon(
-                                        Icons.check,
-                                        color: AppColors.primaryColor,
-                                      ),
-                                      onPressed: () {}),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          //Add padding around textfield
-                          padding:
-                              EdgeInsets.only(top: 15.0, left: 10, right: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'PASSWORD',
-                                  style:
-                                      TextStyle(color: AppColors.primaryColor),
-                                ),
-                              ),
-                              TextFormField(
-                                //    onSaved: (val) => _pass = val,
-                                obscureText: true, // _passwordVisible1,
-                                decoration: InputDecoration(
-                                  //Add th Hint text here.
-
-                                  hintText: "*********",
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  suffixIcon: IconButton(
-                                      icon: Icon(
-                                        Icons.check,
-                                        color: AppColors.primaryColor,
-                                      ),
-                                      onPressed: () {}),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: InkWell(
-                            onTap: () {
-                              // Get.to(() => forgetpassword());
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(
-                                20.0,
-                              ),
-                              child: Text(
-                                "Forgot Password?",
-                                style: GoogleFonts.rubik(
-                                  color: AppColors.primaryColor,
-                                  fontSize: 12,
-                                ),
-                              ),
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            child: Image.asset(
+                              'assets/logo.png',
+                              width: 100,
                             ),
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsets.only(top: 15.0, left: 10, right: 10),
-                          child: Center(
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: 45,
-                              child: MaterialButton(
-                                textColor: Colors.white,
+                          padding: const EdgeInsets.only(left: 20.0, top: 100),
+                          child: Text("Welcome to ...",
+                              style: TextStyle(
+                                  color: Color(0xff91A6AC), fontSize: 18)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Text(
+                            "OTAS Mobile App",
+                            style: TextStyle(
                                 color: AppColors.primaryColor,
-                                child: Text(
-                                  "Sign In",
-                                ),
-                                onPressed: () {
-                                  Get.to(() => BottomBarPage());
-                                },
-                                shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(10.0),
-                                ),
-                              ),
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    //Add padding around textfield
+                    padding: EdgeInsets.only(top: 15.0, left: 10, right: 10),
+                    child: TextFormField(
+                      //   controller: _emailControllerlogin,
+                      keyboardType: TextInputType.emailAddress,
+
+                      // onSaved: (val) => _email = val,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(FontAwesomeIcons.at, size: 18),
+                        hintStyle: TextStyle(color: Colors.grey),
+                        prefixStyle: TextStyle(color: Colors.grey),
+                        // prefix: Image.asset(
+                        //   'assets/email.png',
+                        // ),
+                        //Add th Hint text here.
+                        hintText: "|  Enter your Username",
+                        //  hintStyle: MyResources.hintfontStyle,
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    //Add padding around textfield
+                    padding: EdgeInsets.only(top: 15.0, left: 10, right: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextFormField(
+                          //    onSaved: (val) => _pass = val,
+                          obscureText: true, // _passwordVisible1,
+                          decoration: InputDecoration(
+                            //Add th Hint text here.
+                            prefixIcon: Icon(Icons.lock_open_outlined),
+                            hintStyle: TextStyle(color: Colors.grey),
+                            prefixStyle: TextStyle(color: Colors.grey),
+                            hintText: "|  Enter your Username",
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 39.0, left: 30),
-                  child: Text(
-                    'Sign in',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
+                  Align(
+                    alignment: Alignment.center,
+                    child: InkWell(
+                      onTap: () {
+                        // Get.to(() => forgetpassword());
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(
+                          20.0,
+                        ),
+                        child: Text(
+                          "Lost your Password?",
+                          style: GoogleFonts.rubik(
+                            color: AppColors.primaryColor,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(top: 15.0, left: 10, right: 10),
+                    child: Center(
+                      child: Container(
+                        width: 300,
+                        height: 60,
+                        child: MaterialButton(
+                          textColor: Colors.white,
+                          color: AppColors.primaryColor,
+                          child: Text(
+                            "Login",
+                          ),
+                          onPressed: () {
+                            Get.to(() => BottomBarPage());
+                          },
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 10.0, top: 60, bottom: 100),
+                        const EdgeInsets.only(left: 10.0, top: 60, bottom: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -48,7 +48,8 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 20.0, top: 100),
+                          padding: const EdgeInsets.only(
+                              left: 20.0, top: 100, bottom: 10),
                           child: Text("Welcome to ...",
                               style: TextStyle(
                                   color: Color(0xff91A6AC), fontSize: 18)),
@@ -75,6 +76,8 @@ class _LoginPageState extends State<LoginPage> {
 
                       // onSaved: (val) => _email = val,
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xffF5F5F5),
                         prefixIcon: Icon(FontAwesomeIcons.at, size: 18),
                         hintStyle: TextStyle(color: Colors.grey),
                         prefixStyle: TextStyle(color: Colors.grey),
@@ -82,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                         //   'assets/email.png',
                         // ),
                         //Add th Hint text here.
-                        hintText: "|  Enter your Username",
+                        hintText: "Enter your Username",
                         //  hintStyle: MyResources.hintfontStyle,
                         border: OutlineInputBorder(
                           borderSide: BorderSide.none,
@@ -101,11 +104,13 @@ class _LoginPageState extends State<LoginPage> {
                           //    onSaved: (val) => _pass = val,
                           obscureText: true, // _passwordVisible1,
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(0xffF5F5F5),
                             //Add th Hint text here.
                             prefixIcon: Icon(Icons.lock_open_outlined),
                             hintStyle: TextStyle(color: Colors.grey),
                             prefixStyle: TextStyle(color: Colors.grey),
-                            hintText: "|  Enter your Username",
+                            hintText: "Enter your Username",
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
                               borderRadius: BorderRadius.circular(10.0),

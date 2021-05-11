@@ -163,7 +163,8 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(10),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(announcemtModel.imgUrl, width: 30),
+                          child: Image.asset(announcemtModel.imgUrl,
+                              height: 30, width: 30),
                         ),
                       ),
                       Container(

@@ -41,7 +41,7 @@ class _AllStudentsState extends State<AllStudents> {
         counter: 0,
         phone: '00905497109000',
         degree: "Bachelor of Business Administration (English)",
-        name: 'Mohamed Abdelkader A..',
+        name: 'Mohamed Abdelkader ',
         address:
             'Şehremini Mah, Ahmet Vefik Paşa Cd. No: 6/A, 34104 Fatih/İstanbul',
         email: 'example@gmail.com',
@@ -56,7 +56,7 @@ class _AllStudentsState extends State<AllStudents> {
             'Şehremini Mah, Ahmet Vefik Paşa Cd. No: 6/A, 34104 Fatih/İstanbul',
         email: 'example@gmail.com',
         passport: 'XR33442',
-        name: 'Mohamed Abdelkader A..',
+        name: 'Mohamed Abdelkader ',
         photoUrl: 'https://picsum.photos/200/300'),
   ];
   @override
@@ -71,7 +71,7 @@ class _AllStudentsState extends State<AllStudents> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 39.0, left: 20),
+                  padding: const EdgeInsets.only(top: 35.0, left: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

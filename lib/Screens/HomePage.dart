@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     Container(
                       child: Text(
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                height: Get.height * 0.66,
+                height: Get.height * 0.7,
                 width: Get.width,
                 child: ListView.builder(
                   itemCount: announcements.length,

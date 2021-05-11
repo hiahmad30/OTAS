@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:get/get.dart';
 
-import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:google_fonts/google_fonts.dart';
-import 'package:otasagent/Models/AnnouncementModel.dart';
 import 'package:otasagent/Models/ProgrammeModel.dart';
 import '../Resources.dart';
-import 'AllStudents.dart';
-import 'HomePage.dart';
-import 'Notification.dart';
-import 'StatePage.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -32,7 +25,7 @@ class _SearchPageState extends State<SearchPage> {
             width: Get.width,
             child: Column(children: [
               Container(
-                height: 210,
+                //  height: 210,
                 child: Column(
                   children: [
                     Row(
@@ -58,44 +51,44 @@ class _SearchPageState extends State<SearchPage> {
                         )
                       ],
                     ),
-                    Padding(
-                      //Add padding around textfield
-                      padding: EdgeInsets.only(top: 15.0, left: 10, right: 10),
-                      child: Container(
-                        width: Get.width * 0.83,
-                        decoration: BoxDecoration(
-                          color: Color(0xffF5F6FA),
-                          borderRadius: BorderRadius.circular(10),
+                  ],
+                ),
+              ),
+              Padding(
+                //Add padding around textfield
+                padding: EdgeInsets.only(top: 20.0, left: 10, right: 10),
+                child: Container(
+                  width: Get.width * 0.83,
+                  decoration: BoxDecoration(
+                    color: Color(0xffF5F6FA),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Container(
+                    height: 45,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        prefix: SizedBox(
+                          width: 20,
                         ),
-                        child: Container(
-                          height: 50,
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              suffixIcon: Icon(Icons.search),
-                              prefixStyle:
-                                  TextStyle(color: AppColors.primaryColor),
-                              hintStyle: GoogleFonts.rubik(
-                                color:
-                                    AppColors.dateTimeColor.withOpacity(0.24),
-                                fontSize: 13,
-                              ),
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                              hintText:
-                                  "  Search by program name. e.g. Business",
-                              // border: OutlineInputBorder(
-                              //   borderSide: BorderSide(color: Colors.white),
-                              //   borderRadius: BorderRadius.circular(10.0),
-                              // ),
-                            ),
-                          ),
+                        suffixIcon: Icon(Icons.search),
+                        prefixStyle: TextStyle(color: AppColors.primaryColor),
+                        hintStyle: GoogleFonts.rubik(
+                          color: AppColors.dateTimeColor,
+                          fontSize: 13,
                         ),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        hintText: "Search by program name. e.g. Business",
+                        // border: OutlineInputBorder(
+                        //   borderSide: BorderSide(color: Colors.white),
+                        //   borderRadius: BorderRadius.circular(10.0),
+                        // ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ),
               Container(
@@ -143,14 +136,15 @@ class _SearchPageState extends State<SearchPage> {
                         padding: const EdgeInsets.all(10),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(programModel.imgUrl, width: 30),
+                          child: Image.asset(programModel.imgUrl,
+                              height: 30, width: 30),
                         ),
                       ),
                       Container(
                           child: Text(
                         '${programModel.univName}',
                         style: TextStyle(
-                            color: AppColors.dateTimeColor, fontSize: 12),
+                            color: AppColors.dateTimeColor, fontSize: 14),
                       )),
                     ],
                   ),
@@ -158,7 +152,7 @@ class _SearchPageState extends State<SearchPage> {
                       child: Text(
                     '${programModel.place}',
                     style:
-                        TextStyle(color: AppColors.dateTimeColor, fontSize: 9),
+                        TextStyle(color: AppColors.dateTimeColor, fontSize: 12),
                   )),
                 ],
               ),

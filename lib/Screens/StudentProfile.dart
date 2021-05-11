@@ -28,24 +28,31 @@ class _StudentProfileState extends State<StudentProfile> {
             padding: const EdgeInsets.only(bottom: 10.0),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          right: 10.0, left: 20, top: 50, bottom: 20),
-                      child: Icon(Icons.arrow_back,
-                          size: 25, color: AppColors.dateTimeColor),
+                InkWell(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 10.0, left: 20, top: 50, bottom: 20),
+                          child: Icon(Icons.arrow_back,
+                              size: 25, color: AppColors.dateTimeColor),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10.0, top: 30),
+                          child: Text(
+                            'All Students',
+                            style: TextStyle(
+                                color: AppColors.dateTimeColor,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        )
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10.0, top: 35),
-                      child: Text(
-                        'All Students',
-                        style: TextStyle(
-                            color: AppColors.dateTimeColor,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    )
-                  ],
+                  ),
                 ),
                 Container(
                   decoration: BoxDecoration(

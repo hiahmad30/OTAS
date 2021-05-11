@@ -94,7 +94,8 @@ class _StatePageState extends State<StatePage> {
                             textDirection: TextDirection.rtl,
                             child: DropdownButtonHideUnderline(
                               child: DropdownButton<String>(
-                                style: TextStyle(fontSize: 14),
+                                style:
+                                    TextStyle(fontSize: 14, color: Colors.grey),
                                 items: <String>['2020/2021', '2021/2022']
                                     .map((String value) {
                                   return new DropdownMenuItem<String>(
@@ -117,14 +118,21 @@ class _StatePageState extends State<StatePage> {
                       Padding(
                         padding: const EdgeInsets.only(right: 10.0),
                         child: Container(
-                          padding: EdgeInsets.all(10),
-                          height: 50,
-                          color: Colors.grey,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Color(0xffFFFFFF),
+                            boxShadow: [
+                              BoxShadow(color: Colors.grey[400], blurRadius: 1),
+                            ],
+                          ),
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          height: 40,
                           child: Row(
                             children: [
                               DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
-                                  style: TextStyle(fontSize: 12),
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.black87),
                                   items: <String>[
                                     'jan 01,2021',
                                     'April 24,2021'
@@ -142,15 +150,16 @@ class _StatePageState extends State<StatePage> {
                                 width: 5,
                               ),
                               VerticalDivider(
-                                color: Colors.black,
-                                thickness: 2,
-                                width: 20,
-                                indent: 200,
-                                endIndent: 200,
+                                color: Colors.grey,
+                                thickness: 1,
+                                // width: 20,
+                                //  indent: 200,
+                                //  endIndent: 200,
                               ),
                               DropdownButtonHideUnderline(
                                 child: DropdownButton<String>(
-                                  style: TextStyle(fontSize: 12),
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.black87),
                                   items: <String>[
                                     'May 24,2021 ',
                                     'May 24,2021 '

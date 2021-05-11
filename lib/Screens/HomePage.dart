@@ -37,11 +37,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: AppColors.primaryColor,
-      body: SafeArea(
+      body: Container(
+        //  margin: EdgeInsets.only(bottom: 40),
+        height: Get.height,
+        width: Get.width,
         child: SingleChildScrollView(
           child: Container(
-            height: Get.height,
-            width: Get.width,
             child: Column(children: [
               Container(
                 height: 210,
@@ -118,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                height: Get.height * 0.7,
+                height: Get.height * 0.66,
                 width: Get.width,
                 child: ListView.builder(
                   itemCount: announcements.length,
@@ -136,7 +137,7 @@ class _HomePageState extends State<HomePage> {
 
   getcard(AnnouncemtModel announcemtModel) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
         constraints: BoxConstraints(minHeight: 100),
         decoration: BoxDecoration(
@@ -169,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                           child: Text(
                         '${announcemtModel.name}',
                         style: TextStyle(
-                            color: AppColors.dateTimeColor, fontSize: 12),
+                            color: AppColors.dateTimeColor, fontSize: 14),
                       )),
                     ],
                   ),
@@ -188,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                     print(link);
                   },
                   text: '${announcemtModel.message}',
-                  style: TextStyle(color: Color(0xff333333), fontSize: 14),
+                  style: TextStyle(color: Color(0xff333333), fontSize: 12),
                   linkStyle: TextStyle(color: Color(0xff2595B3)),
                 ),
               ),

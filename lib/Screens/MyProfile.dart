@@ -22,7 +22,7 @@ class MyProfile extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: Get.height,
+            // height: Get.height,
             width: Get.width,
             child: Column(children: [
               Container(
@@ -87,7 +87,7 @@ class MyProfile extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'LOG OUT',
-                        style: TextStyle(color: Colors.red),
+                        style: TextStyle(color: Colors.red, fontSize: 16),
                       ),
                     ),
                   ],

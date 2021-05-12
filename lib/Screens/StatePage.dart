@@ -88,43 +88,93 @@ class _StatePageState extends State<StatePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Container(
-                          child: Text(
-                            '2021/2022',
-                            style: TextStyle(color: AppColors.primaryColor),
+                          child: Directionality(
+                            textDirection: TextDirection.rtl,
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                style:
+                                    TextStyle(fontSize: 14, color: Colors.grey),
+                                items: <String>['2020/2021', '2021/2022']
+                                    .map((String value) {
+                                  return new DropdownMenuItem<String>(
+                                    value: value,
+                                    child: new Text(value),
+                                  );
+                                }).toList(),
+                                onChanged: (_) {},
+                                hint: Text(
+                                  '2020/2021',
+                                  style: TextStyle(
+                                    color: AppColors.primaryColor,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 15.0),
+                        padding: const EdgeInsets.only(right: 10.0),
                         child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Color(0xffFFFFFF),
+                            boxShadow: [
+                              BoxShadow(color: Colors.grey[400], blurRadius: 1),
+                            ],
+                          ),
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          height: 40,
                           child: Row(
                             children: [
-                              DropdownButton<String>(
-                                items: <String>['jan 01,2021', 'April 24,2021']
-                                    .map((String value) {
-                                  return new DropdownMenuItem<String>(
-                                    value: value,
-                                    child: new Text(value),
-                                  );
-                                }).toList(),
-                                onChanged: (_) {},
-                                hint: Text('May 24,2021 '),
+                              DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.black87),
+                                  items: <String>[
+                                    'jan 01,2021',
+                                    'April 24,2021'
+                                  ].map((String value) {
+                                    return new DropdownMenuItem<String>(
+                                      value: value,
+                                      child: new Text(value),
+                                    );
+                                  }).toList(),
+                                  onChanged: (_) {},
+                                  hint: Text('May 24,2021 '),
+                                ),
                               ),
                               SizedBox(
                                 width: 5,
                               ),
-                              DropdownButton<String>(
-                                items: <String>['May 24,2021 ', 'May 24,2021 ']
-                                    .map((String value) {
-                                  return new DropdownMenuItem<String>(
-                                    value: value,
-                                    child: new Text(value),
-                                  );
-                                }).toList(),
-                                onChanged: (_) {},
-                                hint: Text('May 24,2021'),
+                              VerticalDivider(
+                                color: Colors.grey,
+                                thickness: 1,
+                                // width: 20,
+                                //  indent: 200,
+                                //  endIndent: 200,
+                              ),
+                              DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.black87),
+                                  items: <String>[
+                                    'May 24,2021 ',
+                                    'May 24,2021 '
+                                  ].map((String value) {
+                                    return new DropdownMenuItem<String>(
+                                      value: value,
+                                      child: new Text(value),
+                                    );
+                                  }).toList(),
+                                  onChanged: (_) {},
+                                  hint: Text(
+                                    'May 24,2021',
+                                    //style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -136,7 +186,7 @@ class _StatePageState extends State<StatePage> {
               ),
             ),
             Expanded(
-              flex: 3,
+              flex: 2,
               child: Container(
                 child: Column(
                   children: [
@@ -151,7 +201,7 @@ class _StatePageState extends State<StatePage> {
                           return _getCard2(cardModel[index]);
                         },
                         staggeredTileBuilder: (index) => StaggeredTile.count(
-                            2, index != 1 && index != 2 ? 2 : 2.5),
+                            2, index != 1 && index != 2 ? 2.1 : 2.3),
                       ),
                     ),
                   ],
@@ -182,7 +232,7 @@ class _StatePageState extends State<StatePage> {
           ),
           child: Padding(
             padding: const EdgeInsets.only(
-                top: 8.0, right: 10, left: 10, bottom: 40),
+                top: 8.0, right: 10, left: 15, bottom: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,11 +242,13 @@ class _StatePageState extends State<StatePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 120,
+                      width: 80,
                       child: Text(
                         cardMap['name'],
                         style: TextStyle(
-                            color: AppColors.cardTextColor, fontSize: 17),
+                            color: AppColors.cardTextColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
                       ),
                     ),
                     Image.asset(

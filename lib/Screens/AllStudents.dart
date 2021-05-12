@@ -41,7 +41,7 @@ class _AllStudentsState extends State<AllStudents> {
         counter: 0,
         phone: '00905497109000',
         degree: "Bachelor of Business Administration (English)",
-        name: 'Mohamed Abdelkader A..',
+        name: 'Mohamed Abdelkader ',
         address:
             'Şehremini Mah, Ahmet Vefik Paşa Cd. No: 6/A, 34104 Fatih/İstanbul',
         email: 'example@gmail.com',
@@ -56,7 +56,7 @@ class _AllStudentsState extends State<AllStudents> {
             'Şehremini Mah, Ahmet Vefik Paşa Cd. No: 6/A, 34104 Fatih/İstanbul',
         email: 'example@gmail.com',
         passport: 'XR33442',
-        name: 'Mohamed Abdelkader A..',
+        name: 'Mohamed Abdelkader ',
         photoUrl: 'https://picsum.photos/200/300'),
   ];
   @override
@@ -71,7 +71,7 @@ class _AllStudentsState extends State<AllStudents> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 39.0, left: 30),
+                  padding: const EdgeInsets.only(top: 35.0, left: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -95,43 +95,41 @@ class _AllStudentsState extends State<AllStudents> {
                           )
                         ],
                       ),
-                      Padding(
-                        //Add padding around textfield
-                        padding:
-                            EdgeInsets.only(top: 15.0, left: 10, right: 10),
-                        child: Container(
-                          width: Get.width * 0.83,
-                          decoration: BoxDecoration(
-                            color: Color(0xffF5F6FA),
-                            borderRadius: BorderRadius.circular(10),
+                    ],
+                  ),
+                ),
+                Padding(
+                  //Add padding around textfield
+                  padding: EdgeInsets.only(top: 15.0, left: 10, right: 10),
+                  child: Container(
+                    width: Get.width * 0.90,
+                    decoration: BoxDecoration(
+                      color: Color(0xffF5F6FA),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Container(
+                      height: 50,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          prefix: SizedBox(
+                            width: 15,
                           ),
-                          child: Container(
-                            height: 50,
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                prefix: SizedBox(
-                                  width: 15,
-                                ),
-                                suffixIcon: Icon(Icons.search),
-                                suffixStyle: TextStyle(
-                                  fontSize: 20,
-                                ),
-                                hintStyle: GoogleFonts.rubik(
-                                  color: AppColors.dateTimeColor,
-                                  fontSize: 14,
-                                ),
-                                hintText:
-                                    "Search for student by name or passport ID",
-                                border: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                              ),
-                            ),
+                          suffixIcon: Icon(Icons.search),
+                          suffixStyle: TextStyle(
+                            fontSize: 20,
                           ),
+                          hintStyle: GoogleFonts.rubik(
+                            color: AppColors.dateTimeColor,
+                            fontSize: 14,
+                          ),
+                          hintText: "Search for student by name or passport ID",
+                          border: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
                 Align(
@@ -147,7 +145,7 @@ class _AllStudentsState extends State<AllStudents> {
                               bottomLeft: Radius.circular(8),
                               bottomRight: Radius.circular(8)),
                         ),
-                        height: Get.height * 0.66,
+                        height: Get.height * 0.67,
                         width: Get.width,
                         child: ListView.builder(
                             itemCount: demoStudents.length,
@@ -166,7 +164,7 @@ class _AllStudentsState extends State<AllStudents> {
 
   getStudentCard(StudentModel studentModel) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(top: 8.0, left: 8, right: 8),
       child: InkWell(
         onTap: () {
           Get.to(() => StudentProfile(
@@ -176,99 +174,91 @@ class _AllStudentsState extends State<AllStudents> {
         child: Container(
           height: 50,
           color: AppColors.listColor,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 0.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  //  width: Get.width * 0.6,
-                  child: Row(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(80.0),
-                        child: studentModel.photoUrl != null
-                            ? Image.network(
-                                studentModel.photoUrl,
-                                width: 30,
-                                height: 30,
-                                fit: BoxFit.cover,
-                              )
-                            : Container(
-                                child: Icon(Icons.no_photography),
-                                width: 30,
-                                height: 30,
-                              ),
-                      ),
-                      SizedBox(
-                        width: 7,
-                      ),
-                      Container(
-                          constraints: BoxConstraints(
-                              minWidth: Get.width * 0.40,
-                              maxWidth: Get.width * 0.40),
-                          //   width: Get.width * 0.40,
-                          height: 20,
-                          child: Text(
-                            studentModel.name,
-                            style: TextStyle(fontSize: 14),
-                            overflow: TextOverflow.ellipsis,
-                          ))
-                    ],
-                  ),
-                ),
-                Row(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                //  width: Get.width * 0.6,
+                child: Row(
                   children: [
-                    Container(
-                      height: 22,
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 5.0, right: 5),
-                          child: Text(
-                            studentModel.status,
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: studentModel.status == 'paid'
-                                  ? Colors.green
-                                  : studentModel.status ==
-                                          'Awaiting Cond. Acceptance'
-                                      ? AppColors.primaryColor
-                                      : Colors.grey,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(80.0),
+                      child: studentModel.photoUrl != null
+                          ? Image.network(
+                              studentModel.photoUrl,
+                              width: 30,
+                              height: 30,
+                              fit: BoxFit.cover,
+                            )
+                          : Container(
+                              child: Icon(Icons.no_photography),
+                              width: 30,
+                              height: 30,
                             ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                        width: Get.width * 0.40,
+                        height: 20,
+                        child: Text(
+                          studentModel.name,
+                          style: TextStyle(fontSize: 13),
+                          overflow: TextOverflow.ellipsis,
+                        ))
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Container(
+                    height: 23,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 2.0, right: 2),
+                        child: Text(
+                          studentModel.status,
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: studentModel.status == 'paid'
+                                ? Colors.green
+                                : studentModel.status ==
+                                        'Awaiting Cond. Acceptance'
+                                    ? AppColors.primaryColor
+                                    : Colors.grey,
                           ),
                         ),
                       ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        color: Colors.white,
-                        border: Border.all(
-                          color: studentModel.status == 'paid'
-                              ? Colors.green
-                              : studentModel.status ==
-                                      'Awaiting Cond. Acceptance'
-                                  ? AppColors.primaryColor
-                                  : Colors.grey,
-                          width: 1,
-                        ),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      color: Colors.white,
+                      border: Border.all(
+                        color: studentModel.status == 'paid'
+                            ? Colors.green
+                            : studentModel.status == 'Awaiting Cond. Acceptance'
+                                ? AppColors.primaryColor
+                                : Colors.grey,
+                        width: 1,
                       ),
                     ),
-                    studentModel.counter > 0
-                        ? Container(
-                            width: 20,
-                            child: Text(
-                                '  + ' + studentModel.counter.toString(),
-                                style: TextStyle(
-                                    color: Color(0xff9C9F98), fontSize: 10)))
-                        : Container(),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: Color(0xff9C9F98),
-                      size: 20,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  studentModel.counter > 0
+                      ? Container(
+                          width: 20,
+                          child: Text('  +' + studentModel.counter.toString(),
+                              style: TextStyle(
+                                  color: Color(0xff9C9F98), fontSize: 12)))
+                      : Container(),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color(0xff9C9F98),
+                    size: 20,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

@@ -104,7 +104,7 @@ class MyProfile extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          bottom: 8.0, left: 10, right: 10),
+                          bottom: 10.0, left: 10, right: 10),
                       child: TextField(
                         controller: emailContrller,
                       ),
@@ -115,7 +115,7 @@ class MyProfile extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          bottom: 8.0, left: 10, right: 10),
+                          bottom: 10.0, left: 10, right: 10),
                       child: TextField(
                         controller: titleContrller,
                       ),
@@ -126,7 +126,7 @@ class MyProfile extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          bottom: 8.0, left: 10, right: 10),
+                          bottom: 10.0, left: 10, right: 10),
                       child: TextField(
                         controller: organContrller,
                       ),
@@ -137,7 +137,7 @@ class MyProfile extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          bottom: 8.0, left: 10, right: 10),
+                          bottom: 10.0, left: 10, right: 10),
                       child: TextField(
                         controller: phoneContrller,
                       ),

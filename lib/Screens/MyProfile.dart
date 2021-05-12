@@ -152,7 +152,8 @@ class MyProfile extends StatelessWidget {
                             textColor: Colors.white,
                             color: Color(0xff91A6AC),
                             child: Text(
-                              "Save",
+                              "Save Changes",
+                              style: TextStyle(fontSize: 16),
                             ),
                             onPressed: () {},
                             shape: new RoundedRectangleBorder(

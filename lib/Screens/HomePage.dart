@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:get/get.dart';
 
-import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:google_fonts/google_fonts.dart';
 import 'package:otasagent/Models/AnnouncementModel.dart';
 import 'package:otasagent/Screens/MyProfile.dart';
 import '../Resources.dart';

@@ -23,7 +23,7 @@ class _AllStudentsState extends State<AllStudents> {
         email: 'example@gmail.com',
         passport: 'XR33442',
         degree: 'Bachelor of Science',
-        name: 'Mohamed Abdelkader A..',
+        name: 'Mohamed Abdelkader Ahmad',
         photoUrl: 'https://picsum.photos/id/237/200/300'),
     StudentModel(
         status: 'Pending Review',
@@ -66,7 +66,7 @@ class _AllStudentsState extends State<AllStudents> {
         //backgroundColor: AppColors.primaryColor,
         body: SingleChildScrollView(
           child: Container(
-            height: Get.height,
+            // height: Get.height,
             width: Get.width,
             child: Column(
               children: [
@@ -109,17 +109,19 @@ class _AllStudentsState extends State<AllStudents> {
                             height: 50,
                             child: TextFormField(
                               decoration: InputDecoration(
+                                prefix: SizedBox(
+                                  width: 15,
+                                ),
                                 suffixIcon: Icon(Icons.search),
                                 suffixStyle: TextStyle(
                                   fontSize: 20,
                                 ),
                                 hintStyle: GoogleFonts.rubik(
-                                  color:
-                                      AppColors.dateTimeColor.withOpacity(0.24),
-                                  fontSize: 13,
+                                  color: AppColors.dateTimeColor,
+                                  fontSize: 14,
                                 ),
                                 hintText:
-                                    "  Search for student by name or passport ID",
+                                    "Search for student by name or passport ID",
                                 border: InputBorder.none,
                                 enabledBorder: InputBorder.none,
                                 errorBorder: InputBorder.none,
@@ -175,7 +177,7 @@ class _AllStudentsState extends State<AllStudents> {
           height: 50,
           color: AppColors.listColor,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 0.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -199,13 +201,17 @@ class _AllStudentsState extends State<AllStudents> {
                               ),
                       ),
                       SizedBox(
-                        width: 20,
+                        width: 7,
                       ),
                       Container(
-                          width: Get.width * 0.46,
-                          height: 30,
+                          constraints: BoxConstraints(
+                              minWidth: Get.width * 0.40,
+                              maxWidth: Get.width * 0.40),
+                          //   width: Get.width * 0.40,
+                          height: 20,
                           child: Text(
                             studentModel.name,
+                            style: TextStyle(fontSize: 14),
                             overflow: TextOverflow.ellipsis,
                           ))
                     ],
@@ -214,14 +220,14 @@ class _AllStudentsState extends State<AllStudents> {
                 Row(
                   children: [
                     Container(
-                      height: 20,
+                      height: 22,
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.only(left: 5.0, right: 5),
                           child: Text(
                             studentModel.status,
                             style: TextStyle(
-                              fontSize: 8,
+                              fontSize: 10,
                               color: studentModel.status == 'paid'
                                   ? Colors.green
                                   : studentModel.status ==
@@ -249,7 +255,8 @@ class _AllStudentsState extends State<AllStudents> {
                     studentModel.counter > 0
                         ? Container(
                             width: 20,
-                            child: Text('+' + studentModel.counter.toString(),
+                            child: Text(
+                                '  + ' + studentModel.counter.toString(),
                                 style: TextStyle(
                                     color: Color(0xff9C9F98), fontSize: 10)))
                         : Container(),
